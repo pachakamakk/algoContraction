@@ -42,7 +42,7 @@ class Graph {
   bool buildGraph(vector<Road*> roads);
 
   // Adds a node object
-  bool addNodeObj(pair<float, float>);
+  bool addNodeObj(pair<float, float>, int);
  private:
   vector<Node*>	nodes;
   vector<vector<int>> outgoing_arcs_;

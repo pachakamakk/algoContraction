@@ -36,10 +36,9 @@ bool Graph::buildGraph(vector<Road*> roads)
     }
 }
 
-bool Graph::addNodeObj(pair<float, float> point, id)
+bool Graph::addNodeObj(pair<float, float> point, int id)
 {
   vector<int>::size_type nodeTotal = nodes.size();
-  int			id = 0;
 
   for (unsigned i = 0; i != nodeTotal; i++)
     {

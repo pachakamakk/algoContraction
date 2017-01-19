@@ -2,12 +2,12 @@
 # define NODE
 # include "base.h"
 
-Class Node
+class Node
 {
  public:
   Node(pair<float,float> &, int);
   pair<float, float>	point;
   int			id;
-}
+};
 
 #endif
