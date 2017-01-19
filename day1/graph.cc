@@ -2,6 +2,12 @@
 #include "graph.h"
 
 int Graph::AddArc(int from, int to) {
+  if (from < this->NumNodes())
+    this->AddNode(from);
+  if (to < this->NumNodes())
+    this->AddNode(to);
+  this->arcs[this->arcs.size()];
+
   return (0);
 }
 
@@ -10,7 +16,7 @@ void Graph::AddNode(int node) {
   
   if (node > numNodes)
     {
-      while(numNodes < node) {
+      while(numNodes < node + 1) {
 	this->nodes[numNodes] = new Node();
 	numNodes++;
       }
