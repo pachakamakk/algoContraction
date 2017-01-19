@@ -1,6 +1,6 @@
 #include "road.h"
 
-Road::Road(vector<pair<int,int>> &points, bool oneWay, int speed)
+Road::Road(vector<pair<float,float>> &points, bool oneWay, int speed)
 {
   points = points;
   oneWay = oneWay;

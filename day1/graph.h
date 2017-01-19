@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "road.h"
+#include "node.h"
 
 using std::vector;
 using std::string;
@@ -38,8 +39,12 @@ class Graph {
   }
 
   // Builds graph
-  bool buildGraph(vector<Road> roads);
+  bool buildGraph(vector<Road*> roads);
+
+  // Adds a node object
+  bool addNodeObj(pair<float, float>);
  private:
+  vector<Node*>	nodes;
   vector<vector<int>> outgoing_arcs_;
   vector<vector<int>> incoming_arcs_;
   vector<int> tail_;

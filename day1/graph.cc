@@ -20,3 +20,32 @@ void Graph::AddNode(int node) {
     incoming_arcs_.resize(node + 1);
   }
 }
+
+bool Graph::buildGraph(vector<Road*> roads)
+{
+  vector<int>::size_type roadTotal = roads.size();
+  int			id = 0;
+  
+  for (unsigned i = 0; i != roadTotal; i++)
+    {
+      if (addNodeObj(roads[i]->points[0], id))
+	++id;
+      if (addNodeObj(roads[i]->points[0], id))
+	++id;
+      ++i;
+    }
+}
+
+bool Graph::addNodeObj(pair<float, float> point, id)
+{
+  vector<int>::size_type nodeTotal = nodes.size();
+  int			id = 0;
+
+  for (unsigned i = 0; i != nodeTotal; i++)
+    {
+      if (nodes[i]->point == point)
+	return false;
+    }
+  nodes.push_back(new Node(point, id));
+  return true;
+}

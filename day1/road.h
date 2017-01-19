@@ -5,8 +5,8 @@
 Class Road
 {
  public:
-  Road(vector<pair<int,int>> &, bool, int);
-  vector<pair<int, int>>	points;
+  Road(vector<pair<float,float>> &, bool, int);
+  vector<pair<float,float>>	points;
   bool				oneWay;
   int				speed;
 };
