@@ -38,13 +38,19 @@ bool Graph::buildGraph(vector<Road*> roads)
 
 bool Graph::addNodeObj(pair<float, float> point, int id)
 {
-  vector<int>::size_type nodeTotal = nodes.size();
+  /*  vector<int>::size_type nodeTotal = nodes.size();
+  map<pair<float,float>,int>::iterator it;
 
   for (unsigned i = 0; i != nodeTotal; i++)
     {
-      if (nodes[i]->point == point)
+      it = bufferCoord.find(point);
+      if (it->second == -1)
+	{
+	  it->second = id;
+	  nodes.push_back(new Node(point, id));
+	  return true;
+	}
+      else
 	return false;
-    }
-  nodes.push_back(new Node(point, id));
-  return true;
+    }*/
 }

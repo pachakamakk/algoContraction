@@ -5,7 +5,7 @@
 class Node
 {
  public:
-  Node(pair<float,float> &, int);
+  Node(pair<float,float>, int);
   pair<float, float>	point;
   int			id;
 };
