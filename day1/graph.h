@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "road.h"
 
 using std::vector;
 using std::string;
@@ -36,6 +37,8 @@ class Graph {
     return incoming_arcs_[to];
   }
 
+  // Builds graph
+  bool buildGraph(vector<Road> roads);
  private:
   vector<vector<int>> outgoing_arcs_;
   vector<vector<int>> incoming_arcs_;
