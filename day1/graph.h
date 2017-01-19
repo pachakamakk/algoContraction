@@ -9,12 +9,13 @@
 #include <map>
 
 class Arc {
+ public:
   int head;
   int tail;
 };
 
 class Node {
- private:
+ public:
   vector<int> outgoingArcs;
   vector<int> incomingArcs;
 
@@ -25,7 +26,7 @@ class Node {
 
 class Graph {
  private:
-  map<int, Node> nodes;
+  map<int, Node*> nodes;
   map<int, Arc> arcs;
 
  public:
