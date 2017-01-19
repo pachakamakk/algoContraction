@@ -1,4 +1,4 @@
-
+#include "base.h"
 
 // In this graph, nodes are integers in 0..num_nodes-1, and arcs are also
 // integers in 0..num_arcs-1 (in the order in which they're added)
@@ -8,26 +8,25 @@
 #include <utility>
 #include <map>
 
-
 class Arc {
   int head;
   int tail;
-}
+};
 
 class Node {
  private:
-  std::vector<int> tail;
-  std::vector<int> head;
+  vector<int> outgoingArcs;
+  vector<int> incomingArcs;
 
-  vector<std::pair<int, int>> neighbours;
+  // vector<pair<int, int>> neighbours;
   // public:
   // int	AddArc(int to);
 };
 
 class Graph {
  private:
-  std::map<int, Node> nodes;
-  std::map<int, Arc> arcs;
+  map<int, Node> nodes;
+  map<int, Arc> arcs;
 
  public:
   int AddArc(int from, int to);  // Returns the arc index.

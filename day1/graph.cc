@@ -16,7 +16,9 @@
   	}
 
   // Gets the tail ("from") and head ("to") of an arc.
-  int Graph::Tail(int arc) const;
+  int Graph::Tail(int arc) {
+  	
+  }
   int Graph::Head(int arc) const;
 
   // Returns a list of all the arc indices whose Tail is "from".
