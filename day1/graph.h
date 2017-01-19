@@ -4,9 +4,21 @@
 // integers in 0..num_arcs-1 (in the order in which they're added)
 // Thus, when you AddArc(4, 128), you implicitly declare the existence of
 // at least 129 nodes (0..128).
+
+#include <utility>
+#include <map>
+
+class Node {
+ private:
+  vector<std::pair<int, int>> neighbours;
+ public:
+  int	AddArc(int to);
+};
+
 class Graph {
  private:
-  std::vector 
+  std::map<int,Node>  nodes;
+  
  public:
   int AddArc(int from, int to);  // Returns the arc index.
 
