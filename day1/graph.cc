@@ -27,19 +27,19 @@ int Graph::NumArcs() const {
 
 // Gets the tail ("from") and head ("to") of an arc->
 int Graph::Tail(int arc) const {
-  return (arcs[arc].tail);
+  return (arcs.at(arc).tail);
 }
 
 int Graph::Head(int arc) const {
-  return (arcs[arc].head);
+  return (arcs.at(arc).head);
 }
 
 // Returns a list of all the arc indices whose Tail is "from"->
 const vector<int>& Graph::OutgoingArcs(int from) const{
-  return (nodes[from]->outgoingArcs);
+  return (nodes.at(from)->outgoingArcs);
 }
 
 // Returns a list of all the arc indices whose Head is "to"->
 const vector<int>& Graph::IncomingArcs(int to) const {
-  return (nodes[to]->incomingArcs);
+  return (nodes.at(to)->incomingArcs);
 }
