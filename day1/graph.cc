@@ -30,7 +30,7 @@ bool Graph::buildGraph(vector<Road*> roads)
     {
       if (addNodeObj(roads[i]->points[0], id))
 	++id;
-      if (addNodeObj(roads[i]->points[0], id))
+      if (addNodeObj(roads[i]->points[roads.size()], id))
 	++id;
       ++i;
     }
