@@ -8,17 +8,27 @@
 #include <utility>
 #include <map>
 
+
+class Arc {
+  int head;
+  int tail;
+}
+
 class Node {
  private:
+  std::vector<int> tail;
+  std::vector<int> head;
+
   vector<std::pair<int, int>> neighbours;
- public:
-  int	AddArc(int to);
+  // public:
+  // int	AddArc(int to);
 };
 
 class Graph {
  private:
-  std::map<int,Node>  nodes;
-  
+  std::map<int, Node> nodes;
+  std::map<int, Arc> arcs;
+
  public:
   int AddArc(int from, int to);  // Returns the arc index.
 
