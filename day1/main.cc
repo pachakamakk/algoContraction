@@ -3,6 +3,7 @@
 #include <string>     // std::string, std::stoi
 #include <utility>     // std::string, std::stoi
 #include "road.h"
+#include "graph.h"
 
 int main(int argc, char* argv[])
 {
@@ -10,7 +11,9 @@ int main(int argc, char* argv[])
 	vector<Road*> roads;
 
     std::ifstream file(argv[1]);
-    std::string str; 
+    std::string str;
+    Graph graph;
+
     while (std::getline(file, str))
     {
     	std::string delimiter = ",";
@@ -47,7 +50,8 @@ int main(int argc, char* argv[])
 		std::cout << name << " " << speed << " " << oneway << " " << numPoints << "\n";
 
 	  	vector<pair<float,float>>	points;
-
+		int				idNode = 0;
+		map<pair<float,float>,int>::iterator it;
 		while (i < numPoints)
 		{
 			// lat
@@ -73,7 +77,32 @@ int main(int argc, char* argv[])
 			point.first = lat;
 			point.second = lng;
 			points.push_back(point);
-			// points.push_back(make_pair(lat, lng));
+			std::cout << "lol1\n";
+			it = graph.bufferCoord.find(point);
+			if ((i == 0 || i == numPoints - 1) && (it == graph.bufferCoord.end() || it->second == -1))
+			  {
+			    std::cout << "lol1é\n";
+			    it->second = idNode;
+			    std::cout << "Data: " << point.first << " and " << point.second << " and " << idNode << "\n";
+			    graph.nodes.push_back(new Node(point, idNode));
+			    std::cout << "lol1é OK\n";
+
+			    ++idNode;
+			  }
+			else
+			  {
+			    std::cout << "lol2\n";
+			    if (it ==  graph.bufferCoord.end())
+			      graph.bufferCoord.insert(pair<pair<float,float>, int>(point, -1));
+			    else if (it->second == -1)
+			      {
+				std::cout << "lol3\n";
+				it->second = idNode;
+				graph.nodes.push_back(new Node(point, idNode));
+				++idNode;
+			      }
+			    std::cout << "lol4\n";
+			  }
 			std::cout << "lat == " << lat << " lng == " << lng << "\n";
 			i++;
 		}
