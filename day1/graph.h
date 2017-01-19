@@ -44,6 +44,7 @@ class Graph {
   // Adds a node object
   bool addNodeObj(pair<float, float>, int);
  private:
+  map<pair<float, float>, int> bufferCoord;
   vector<Node*>	nodes;
   vector<vector<int>> outgoing_arcs_;
   vector<vector<int>> incoming_arcs_;
