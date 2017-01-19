@@ -1,51 +1,22 @@
-#include <utility>
 #include "graph.h"
 
-int Graph::AddArc(int from, int to) {
-  if (from < this->NumNodes())
-    this->AddNode(from);
-  if (to < this->NumNodes())
-    this->AddNode(to);
-  this->arcs[this->arcs.size()];
+#include "base.h"
 
-  return (0);
+int Graph::AddArc(int from, int to) {
+  CHECK_GE(from, 0);
+  CHECK_GE(to, 0);
+  AddNode(std::max(from, to));
+  const int arc_index = NumArcs();
+  outgoing_arcs_[from].push_back(arc_index);
+  incoming_arcs_[to].push_back(arc_index);
+  tail_.push_back(from);
+  head_.push_back(to);
+  return arc_index;
 }
 
 void Graph::AddNode(int node) {
-  int numNodes = this->nodes.size();
-  
-  if (node > numNodes)
-    {
-      while(numNodes < node + 1) {
-	this->nodes[numNodes] = new Node();
-	numNodes++;
-      }
-    }
-}
-
-int Graph::NumNodes() const {
-  return (this->nodes.size());
-}
-
-int Graph::NumArcs() const {
-  return (this->arcs.size());
-}
-
-// Gets the tail ("from") and head ("to") of an arc->
-int Graph::Tail(int arc) const {
-  return (arcs.at(arc).tail);
-}
-
-int Graph::Head(int arc) const {
-  return (arcs.at(arc).head);
-}
-
-// Returns a list of all the arc indices whose Tail is "from"->
-const vector<int>& Graph::OutgoingArcs(int from) const{
-  return (nodes.at(from)->outgoingArcs);
-}
-
-// Returns a list of all the arc indices whose Head is "to"->
-const vector<int>& Graph::IncomingArcs(int to) const {
-  return (nodes.at(to)->incomingArcs);
+  if (NumNodes() <= node) {
+    outgoing_arcs_.resize(node + 1);
+    incoming_arcs_.resize(node + 1);
+  }
 }
