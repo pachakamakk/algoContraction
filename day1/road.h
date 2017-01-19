@@ -2,10 +2,10 @@
 # define ROAD
 # include "base.h"
 
-Class Road
+class Road
 {
  public:
-  Road(vector<pair<float,float>> &, bool, int);
+  Road(vector<pair<float,float>>, bool, int);
   vector<pair<float,float>>	points;
   bool				oneWay;
   int				speed;

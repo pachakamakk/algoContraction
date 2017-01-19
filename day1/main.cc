@@ -1,9 +1,14 @@
 #include <fstream>
 #include <iostream>   // std::cout
 #include <string>     // std::string, std::stoi
+#include <utility>     // std::string, std::stoi
+#include "road.h"
 
 int main(int argc, char* argv[])
 {
+	
+	vector<Road*> roads;
+
     std::ifstream file(argv[1]);
     std::string str; 
     while (std::getline(file, str))
@@ -40,6 +45,9 @@ int main(int argc, char* argv[])
 
 		int i = 0;
 		std::cout << name << " " << speed << " " << oneway << " " << numPoints << "\n";
+
+	  	vector<pair<float,float>>	points;
+
 		while (i < numPoints)
 		{
 			// lat
@@ -59,14 +67,19 @@ int main(int argc, char* argv[])
 				lngString = str.substr(0, str.find(delimiter));				
 				str.erase(str.begin(), str.begin() + lngString.size() + 1);				
 			}
-
-
 			float lng = std::stof(lngString);
 
-
+			pair<float, float> point;
+			point.first = lat;
+			point.second = lng;
+			points.push_back(point);
+			// points.push_back(make_pair(lat, lng));
 			std::cout << "lat == " << lat << " lng == " << lng << "\n";
 			i++;
 		}
+
+	roads.push_back(new Road(points, oneway, speed));
+	// roads.add()
 
 
 		std::cout << str << "\n\n";
