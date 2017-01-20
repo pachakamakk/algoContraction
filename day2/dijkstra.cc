@@ -7,12 +7,13 @@ Dijkstra::Dijkstra(const Graph* graph, const vector<double>* arc_lengths)
 
 const Graph& Dijkstra::GetGraph() const 
 {
-
+	this.graph = graph;
+	this. arc_lengths = arc_lengths;
 }
 
 void Dijkstra::RunUntilAllTargetsAreReached(int source, const vector<int>& targets) 
 {
-
+	
 }
 
 // Returns the set of all nodes reached by the last run.
@@ -25,7 +26,7 @@ const vector<int>& Dijkstra::ReachedNodes() const
 // which is infinity if node #i wasn't reached.
 const vector<double>& Dijkstra::Distances() const
 {
-
+	return (this.bestDistance());
 }
 
 // Element #i is the arc that arrives at node #i in the shortest
@@ -33,12 +34,12 @@ const vector<double>& Dijkstra::Distances() const
 // node is the source.
 const vector<int>& Dijkstra::ParentArcs() const 
 {
-
+	return (this.parentArc());
 }
 
 // Returns the full shortest path (a sequence of arcs) from the source of
 // the last run to "node", assuming that "node" was reached.
 vector<int> Dijkstra::ArcPathFromSourceTo(int node) const
 {
-
+	return (dijkstraNode[node].arcPathFromSource);
 }

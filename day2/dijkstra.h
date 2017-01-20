@@ -12,11 +12,14 @@ using std::priority_queue;
 using std::vector;
 
 struct DijkstraState {
-  int node;
-  double distance;
-
+    int node;
+    double distance;
   // So that we can do std::priority_queue<DijkstraState>. Beware the ordering!
   bool operator<(const DijkstraState& other) const;
+
+  // ADDED
+  // int bestParent;
+  vector<int> arcPathFromSource;
 };
 
 // This class helps to run several Dijkstra computation serially (it it NOT
@@ -24,6 +27,13 @@ struct DijkstraState {
 // only O(num edges explored) time is used by each Dijkstra computation,
 // even if it's sparse (i.e. num edges explored <<< num nodes).
 class Dijkstra {
+  vector<int>& parentArc;
+  vector<double>& bestDistances;
+  vector<DijkstraState> dijkstraNode;
+  Graph* graph;
+  const vector<double>* arc_lengths;
+
+
  public:
   // The given graph and arc lengths won't be copied, and must remain live for
   // the lifetime of this class.
