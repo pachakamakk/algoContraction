@@ -1,8 +1,8 @@
 CC      = g++
 CFLAGS  = -std=c++11
 LDFLAGS =
-HEADS   = graph.h base.h road.h node.h
-SRCS    = main.cc graph.cc road.cc utils.cc node.cc
+HEADS   = base.h dijkstra.h graph.h parse_csv.h
+SRCS    = main.cc dijkstra.cc graph.cc parse_csv.cc
 OBJS    = $(SRCS:.cc=.o)
 EXEC    = server
 
@@ -11,17 +11,14 @@ all:            $(EXEC)
 server:         $(OBJS) $(HEADS)
 				$(CC) -o $(EXEC) $(OBJS) $(CFLAGS) $(LDFLAGS)
 
-graph.o:        graph.cc
+dijkstra.o:     dijkstra.cc
+				$(CC) -o dijkstra.o -c dijkstra.cc $(CFLAGS)
+				
+graph.o:		graph.cc
 				$(CC) -o graph.o -c graph.cc $(CFLAGS)
 
-road.o:			road.cc
-				$(CC) -o road.o -c road.cc $(CFLAGS)
-
-utils.o:		utils.cc
-				$(CC) -o utils.o -c utils.cc $(CFLAGS)
-				
-node.o:			node.cc
-				$(CC) -o node.o -c node.cc $(CFLAGS)
+parse_csv.o:	parse_csv.cc
+				$(CC) -o parse_csv.o -c parse_csv.cc $(CFLAGS)
 
 main.o:         main.cc
 				$(CC) -o main.o -c main.cc $(CFLAGS)
