@@ -3,8 +3,6 @@
 
 #include <string>
 #include <vector>
-#include "road.h"
-#include "node.h"
 
 using std::vector;
 using std::string;
@@ -37,15 +35,6 @@ class Graph {
   const vector<int>& IncomingArcs(int to) const {
     return incoming_arcs_[to];
   }
-
-  // Builds graph
-  bool buildGraph(vector<Road*> roads);
-
-  // Adds a node object
-  bool addNodeObj(pair<float, float>, int);
-
-  map<pair<float, float>, int> bufferCoord;
-  vector<Node*>	nodes;
 
  private:
   vector<vector<int>> outgoing_arcs_;
